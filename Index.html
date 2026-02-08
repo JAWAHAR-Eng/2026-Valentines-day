@@ -63,6 +63,10 @@
         }
 
         .hero-text {
+            background: rgba(59, 47, 47, 0.7);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
             animation: fadeIn 2s ease-in;
             transform: translateZ(0);
         }
@@ -85,8 +89,9 @@
         .hero-small {
             font-size: 1rem;
             color: #fff;
-            opacity: 0.8;
+            opacity: 0.9;
             font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes fadeIn {
@@ -635,34 +640,52 @@
             align-items: center;
             text-align: center;
             color: white;
+            padding: 3rem 2rem;
         }
 
         .ending h1 {
             font-size: 3rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: rgba(59, 47, 47, 0.6);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
         }
 
         .ending-subtitle {
             font-size: 1.3rem;
             margin-bottom: 3rem;
             opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background: rgba(59, 47, 47, 0.5);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .ending-footer {
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.9;
             font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background: rgba(59, 47, 47, 0.4);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .hero p {
                 font-size: 1.1rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .section-title {
