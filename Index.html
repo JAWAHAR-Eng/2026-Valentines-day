@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Angel ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #3b2f2f;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* FLOATING PETALS ANIMATION */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* HERO SECTION with Parallax */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #3b2f2f 0%, #f3e6d8 50%, #f7c6c7 100%);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            animation: fadeIn 2s ease-in;
+            transform: translateZ(0);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #fff;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-small {
+            font-size: 1rem;
+            color: #fff;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SHARED SECTION STYLES */
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* LETTER SECTION */
+        .letter {
+            background: #faf7f4;
+        }
+
+        .letter-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .letter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .letter-card h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #3b2f2f;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .letter-card p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #5a4a4a;
+            line-height: 1.8;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 2rem;
+            color: #8a7a7a;
+        }
+
+        /* REASONS I LOVE YOU - Flip Cards */
+        .reasons {
+            background: #f3e6d8;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .flip-card {
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #f7c6c7, #f3e6d8);
+            color: #3b2f2f;
+            font-size: 2.5rem;
+        }
+
+        .flip-card-back {
+            background: white;
+            color: #5a4a4a;
+            transform: rotateY(180deg);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* TIMELINE SECTION */
+        .timeline {
+            background: white;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #f7c6c7;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            animation: slideIn 0.6s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: #f7c6c7;
+            border-radius: 50%;
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.5);
+        }
+
+        .timeline-card {
+            background: #faf7f4;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .timeline-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #3b2f2f;
+            font-weight: 400;
+        }
+
+        .timeline-card p {
+            color: #6a5a5a;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* PHOTO CAROUSEL */
+        .gallery {
+            background: #faf7f4;
+        }
+
+        .gallery-intro {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #5a4a4a;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 450px;
+            background: #f3e6d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #f7c6c7;
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4c4c4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #f7c6c7;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            font-style: italic;
+            color: #8a7a7a;
+            margin-top: 2rem;
+        }
+
+        /* Touch swipe support */
+        .carousel-container {
+            touch-action: pan-y;
+        }
+
+        /* SONG SECTION */
+        .song {
+            background: white;
+            text-align: center;
+        }
+
+        .song-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .song p {
+            font-size: 1.2rem;
+            color: #5a4a4a;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .audio-placeholder {
+            background: linear-gradient(135deg, #faf7f4, #f3e6d8);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            font-size: 1.1rem;
+            color: #8a7a7a;
+            font-style: italic;
+        }
+
+        /* WHAT YOU ARE SECTION */
+        .what-you-are {
+            background: #f9f3ec;
+        }
+
+        .qualities {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quality-item {
+            font-size: 1.3rem;
+            color: #5a4a4a;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .quality-item:nth-child(1) { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .quality-item:nth-child(2) { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+        .quality-item:nth-child(3) { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+        .quality-item:nth-child(4) { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+        .quality-item:nth-child(5) { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quality-item::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .playful-note {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8a7a7a;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* BUCKET LIST SECTION */
+        .bucket-list {
+            background: white;
+        }
+
+        .bucket-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #5a4a4a;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .bucket-items {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .bucket-item {
+            background: #faf7f4;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bucket-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bucket-checkbox {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #f7c6c7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .bucket-item.checked .bucket-checkbox {
+            background: #f7c6c7;
+        }
+
+        .bucket-item.checked .bucket-checkbox::after {
+            content: "✓";
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .bucket-text {
+            font-size: 1.2rem;
+            color: #5a4a4a;
+        }
+
+        .bucket-item.checked .bucket-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* FUTURE SECTION */
+        .future {
+            background: linear-gradient(135deg, #f7e8e8, #f3e6d8);
+        }
+
+        .future-text {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .future-text p {
+            font-size: 1.4rem;
+            color: #5a4a4a;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .future-ending {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            color: #8a7a7a;
+        }
+
+        /* SECRET MESSAGE */
+        .secret {
+            background: white;
+            text-align: center;
+        }
+
+        .secret-trigger {
+            display: inline-block;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .secret-trigger:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .secret-label {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: #8a7a7a;
+            font-style: italic;
+        }
+
+        .secret-message {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background: #faf7f4;
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .secret-message.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .secret-message p {
+            font-size: 1.3rem;
+            color: #5a4a4a;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* ENDING SECTION */
+        .ending {
+            background: linear-gradient(135deg, #3b2f2f 0%, #f3e6d8 50%, #f7c6c7 100%);
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .ending h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .ending-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .ending-footer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .letter-card {
+                padding: 2rem;
+            }
+
+            .timeline-container {
+                padding-left: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .ending h1 {
+                font-size: 2.2rem;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flip-card {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FLOATING PETALS -->
+    <div class="petals-container" id="petalsContainer"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" data-parallax="0.5">
+        <div class="hero-text">
+            <h1>Oii Angel… 🌷👰‍♀️</h1>
+            <p>This isn't just a website. It's a smile I wanted to give you.</p>
+            <span class="hero-small">Take your time. This is ours.</span>
+        </div>
+    </section>
+
+    <!-- LETTER SECTION -->
+    <section class="letter" data-parallax="0.3">
+        <div class="letter-card">
+            <h2>To my Angel</h2>
+            <p>You have this quiet magic. You walk into my life and suddenly things feel lighter.</p>
+            <p>With you, happiness isn't loud. It's soft laughs, silly moments, and a calm that settles in without asking.</p>
+            <p>You may expect me to laugh around you but you are not my fun place you are my home.</p>
+            <p>You make ordinary days feel special just by being you.</p>
+            <p>Loving you feels easy. And joyful. And right.</p>
+            <p>If this page makes you smile even a little, then it's done its job.</p>
+            <div class="letter-signature">— With all my love 🤍</div>
+        </div>
+    </section>
+
+    <!-- REASONS I LOVE YOU -->
+    <section class="reasons" data-parallax="0.4">
+        <h2 class="section-title">Reasons I Love You 💝</h2>
+        <p style="text-align: center; color: #5a4a4a; font-style: italic; margin-bottom: 2rem;">Click each card to reveal why you're so special</p>
+        
+        <div class="reasons-grid">
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">💫</div>
+                    <div class="flip-card-back">Your smile lights up my entire day</div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">🌟</div>
+                    <div class="flip-card-back">The way you accept or adjust my flaws</div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">💖</div>
+                    <div class="flip-card-back">How you make me feel myself just by being with you</div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">✨</div>
+                    <div class="flip-card-back">Your kindness, even in the smallest moments</div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">🌸</div>
+                    <div class="flip-card-back">Because I'm your hero and you are my angel</div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">💕</div>
+                    <div class="flip-card-back">How being with you feels like coming home</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section class="timeline" data-parallax="0.3">
+            <h2 class="section-title">Us, so far ✨</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>💬 How It All Started</h3>
+                        <p>Just a office mandatory training doubt turned into life changing moment</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>❤️ Day One</h3>
+                        <p>Dec 31 - You opened up and unveiled my heart and had my first promise</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>😘 First kiss</h3>
+                        <p>May 15 - a forgetable day where I achieved both physical and mental excitement</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>💞 We fell harder for each other</h3>
+                        <p>June 7 - an unforgetable day, at the same place where I gained your trust, I promised. this day can't be expressed within this page😅</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>❤️ Becoming 'Us'</h3>
+                        <p>Still writing this story. And loving every page. waiting for the next page</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- PHOTO CAROUSEL -->
+    <section class="gallery" data-parallax="0.4">
+        <h2 class="section-title">📸 Our Memories</h2>
+        <p class="gallery-intro">Some moments deserve a place of their own.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="carousel-item">
+                    <img src="Image1.jpg" alt="Memory 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="Image2.jpg" alt="Memory 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="Image3.jpg" alt="Memory 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="Image4.jpg" alt="Memory 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="Image5.jpg" alt="Memory 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="Image6.jpg" alt="Memory 5">
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-nav">
+            <button class="carousel-btn" onclick="moveCarousel(-1)">‹</button>
+            <button class="carousel-btn" onclick="moveCarousel(1)">›</button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+        
+        <p class="gallery-caption">Each one holds a smile I never want to lose.</p>
+    </section>
+
+    <!-- SONG SECTION -->
+  <section class="song" data-parallax="0.3">
+        <h2 class="section-title">This song… it's you 🎶</h2>
+        <div class="song-container">
+            <p>I made this for you. A small piece of our story, in sound.</p>
+            <p>Close your eyes. Smile. That's us.</p>
+            <audio controls style="width: 100%; max-width: 500px; margin: 2rem auto; display: block; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
+                <source src="song.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <p style="font-size: 0.9rem; color: #8a7a7a; margin-top: 1rem; font-style: italic;">
+                Press play and let the music speak 🎵
+            </p>
+        </div>
+    </section>
+
+    <!-- WHAT YOU ARE SECTION -->
+    <section class="what-you-are" data-parallax="0.4">
+        <h2 class="section-title">What you bring into my life 🌼</h2>
+        <div class="qualities">
+            <div class="quality-item">You turn ordinary moments into memories I want to keep.</div>
+            <div class="quality-item">You make me feel calm even on days that feel heavy.</div>
+            <div class="quality-item">You remind me that happiness doesn’t have to be loud to be real.</div>
+            <div class="quality-item">And somehow… everything feels better with you in it.</div>
+            <p class="playful-note">And somehow… you do all this without even trying 🤍</p>
+        </div>
+    </section>
+
+    <!-- BUCKET LIST SECTION -->
+    <section class="bucket-list" data-parallax="0.3">
+        <h2 class="section-title">Our Dreams Together 🌠</h2>
+        <p class="bucket-intro">All the adventures waiting for us…</p>
+        
+        <div class="bucket-items">
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">Get Married 💕</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">A trip only for us 🏍️🚙</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">International honeymoon</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">Reveal our love proudly to eveyone 📢</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">Night ride 🌃</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">unnoda bucket list 1</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">unnoda bucket list 2</div>
+            </div>
+
+            <div class="bucket-item" onclick="toggleBucket(this)">
+                <div class="bucket-checkbox"></div>
+                <div class="bucket-text">unnoda bucket list 3</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTURE SECTION -->
+    <section class="future" data-parallax="0.4">
+        <h2 class="section-title">What I hope for us 🔮</h2>
+        <div class="future-text">
+            <p>More moments.</p>
+            <p>More days where we choose each other without hesitation.</p>
+            <p class="future-ending">Whatever comes next, I hope we face it side by side.</p>
+        </div>
+    </section>
+
+    <!-- SECRET MESSAGE SECTION -->
+    <section class="secret" data-parallax="0.3">
+        <h2 class="section-title">🔒 A Little Secret</h2>
+        <div class="secret-trigger" onclick="revealSecret()">💗</div>
+        <span class="secret-label">Tap this</span>
+        
+        <div class="secret-message" id="secretMessage">
+            <p><strong>If you're ever having a bad day,<br>remember this:</strong></p>
+            <p>You are loved. Deeply. Always.</p>
+            <p>And yes… you're still my favorite person 😊</p>
+            <p><em>(Another secret - Nee dha dii azhagi, Nee mattum dha azhagu)</em></p>
+        </div>
+    </section>
+
+    <!-- ENDING SECTION -->
+    <section class="ending">
+        <h1>Happy Valentine's Day, Angel ❤️</h1>
+        <p class="ending-subtitle">Today, tomorrow, and all the little days in between.</p>
+        <p class="ending-footer">Made with love, just for you.</p>
+    </section>
+
+    <script>
+        // FLOATING PETALS
+        function createPetals() {
+            const container = document.getElementById('petalsContainer');
+            const petals = ['🌸', '💗', '💕', '🌷', '💝'];
+            
+            for (let i = 0; i < 20; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(petal);
+            }
+        }
+
+        // PARALLAX EFFECT
+        function parallaxScroll() {
+            const sections = document.querySelectorAll('[data-parallax]');
+            const scrolled = window.pageYOffset;
+
+            sections.forEach(section => {
+                const speed = section.getAttribute('data-parallax');
+                const offset = section.offsetTop;
+                const distance = scrolled - offset;
+                const yPos = -(distance * speed);
+                
+                if (scrolled > offset - window.innerHeight && scrolled < offset + section.offsetHeight) {
+                    section.style.transform = `translateY(${yPos}px)`;
+                }
+            });
+        }
+
+        // FLIP CARDS
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        // CAROUSEL
+        let currentSlide = 0;
+        const totalSlides = 6; // Updated to match your 6 images
+
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateDots();
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function createDots() {
+            const dotsContainer = document.getElementById('carouselDots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => {
+                    currentSlide = i;
+                    updateCarousel();
+                };
+                dotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Touch swipe for carousel
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carouselContainer.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                moveCarousel(1);
+            }
+            if (touchEndX - touchStartX > 50) {
+                moveCarousel(-1);
+            }
+        });
+
+        // BUCKET LIST
+        function toggleBucket(item) {
+            item.classList.toggle('checked');
+        }
+
+        // SECRET MESSAGE
+        function revealSecret() {
+            const message = document.getElementById('secretMessage');
+            message.classList.add('revealed');
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createPetals();
+            createDots();
+        });
+
+        window.addEventListener('scroll', parallaxScroll);
+    </script>
+</body>
+</html>
