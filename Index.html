@@ -989,6 +989,23 @@
     </section>
 
     <script>
+                // PASSWORD PROTECTION
+        function checkPassword() {
+            const correctPassword = "YourPasswordHere"; // Change this password
+            const enteredPassword = prompt("🔒 Enter password to view this special page:");
+            
+            if (enteredPassword !== correctPassword) {
+                alert("❌ Incorrect password!");
+                window.location.href = "https://www.google.com";
+                return false;
+            }
+            return true;
+        }
+ 
+        // Check password when page loads
+        if (!checkPassword()) {
+            document.body.innerHTML = "";
+        }
         // FLOATING PETALS
         function createPetals() {
             const container = document.getElementById('petalsContainer');
